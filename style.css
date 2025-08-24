@@ -93,28 +93,28 @@ body {
     margin-bottom: 5px;
 }
 
+/* 이 부분의 코드를 찾아서 아래 내용으로 교체해 주세요 */
 .example-questions {
-    padding: 5px 15px;
+    padding: 5px 20px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    background-color: transparent; /* 배경색 완전히 제거 */
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .example-btn {
-    background-color: transparent;
+    background-color: #f1f1f1;
     border: 1px solid #ddd;
     border-radius: 15px;
     padding: 8px 12px;
+    margin-bottom: 8px;
     cursor: pointer;
     font-size: 14px;
     text-align: left;
 }
 
 .example-btn:hover {
-    background-color: #f0f0f0;
+    background-color: #e7e7e7;
 }
-
 
 
 
