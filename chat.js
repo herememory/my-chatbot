@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ✨ 텍스트를 분석해서 링크를 걸어주는 최종 버전 함수 ✨
+    // ✨ 텍스트를 분석해서 링크를 걸어주는 최종 완성 버전 함수 ✨
     function linkify(text) {
-        // '(관세법 시행규칙 제48조) https://...' 와 같은 패턴을 찾습니다.
-        const citationRegex = /\(([^)]+)\)\s*(https?:\/\/[^\s]+)/g;
+        // (관세법...), 관세법... 등 괄호가 있거나 없는 모든 형식을 처리하는 정규식
+        const citationRegex = /((?:\()?(?:관세법|관세법 시행규칙|보세판매장 고시)\s*제\d+조(?:\s*제\d+항)?(?:\))?)\s*(https?:\/\/[^\s]+)/g;
 
         // 찾은 패턴을 <a href="URL">법조항</a> 형태로 먼저 바꿉니다.
         let processedText = text.replace(citationRegex, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
