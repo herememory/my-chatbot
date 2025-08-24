@@ -40,23 +40,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ✨ 텍스트 안의 URL을 더 똑똑하게 찾아 링크 태그로 바꿔주는 기능 ✨
+    // ✨ 텍스트를 분석해서 링크를 걸어주는 최종 버전 함수 ✨
     function linkify(text) {
-        // 괄호, 대괄호, 공백 등을 제외하고 순수한 URL만 찾아내는 정규식
-        const urlRegex = /(https?:\/\/[^\s<>()\[\]]+)/g;
+        // 1. '관세법 제196조 http://...' 와 같은 패턴을 찾아 링크로 변환
+        const citationRegex = /((?:관세법|관세법 시행규칙|보세판매장 고시)\s*제\d+조(?:\s*제\d+항)?)/g;
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+        let processedText = text.replace(citationRegex, (match, citation) => {
+            // 바로 다음에 오는 URL을 찾습니다.
+            const remainingText = text.substring(text.indexOf(citation) + citation.length);
+            const urlMatch = remainingText.match(urlRegex);
+            
+            if (urlMatch) {
+                const url = urlMatch[0];
+                // 원본 텍스트에서 '법조항 + URL' 부분을 링크로 교체
+                text = text.replace(citation + url, `<a href="${url}" target="_blank" rel="noopener noreferrer">${citation}</a>`);
+                return `<a href="${url}" target="_blank" rel="noopener noreferrer">${citation}</a>`;
+            }
+            return citation; // URL을 못찾으면 그냥 원본 텍스트 유지
+        });
         
-        // 텍스트 속 괄호나 대괄호를 제거한 뒤 링크를 생성합니다.
-        const cleanedText = text.replace(/[\[\]()]/g, '');
-        
-        return cleanedText.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+        // 2. 혹시 남아있는 일반 URL이 있다면 그것도 링크로 변환
+        return processedText.replace(urlRegex, (url) => {
+             if (!url.includes('</a>')) { // 이미 링크로 변환된건 무시
+                return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+             }
+             return url;
+        });
     }
 
     function appendMessage(message, sender) {
         const messageWrapper = document.createElement('div');
         messageWrapper.className = sender === 'user' ? 'user-message' : 'bot-message';
         
-        // .innerHTML 을 사용하고 개선된 linkify 함수를 적용
-        messageWrapper.innerHTML = linkify(message);
+        messageWrapper.innerHTML = linkify(message.replace(/\n/g, '<br>')); // 줄바꿈도 지원
         
         chatBox.appendChild(messageWrapper);
         chatBox.scrollTop = chatBox.scrollHeight;
