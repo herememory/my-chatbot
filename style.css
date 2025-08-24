@@ -42,7 +42,6 @@ body {
 .bot-message {
     background-color: #e9e9eb;
     color: #333;
-    align-self: flex-start;
 }
 #user-input {
     display: flex;
@@ -116,6 +115,7 @@ body {
 .example-btn:hover {
     background-color: #e7e7e7;
 }
+
 
 
 
