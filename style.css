@@ -7,6 +7,7 @@ body {
     margin: 0;
     background-color: #f4f7f6;
 }
+
 #chat-container {
     width: 450px;
     height: 700px;
@@ -17,36 +18,79 @@ body {
     background-color: white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 #chat-box {
     flex-grow: 1;
-    padding: 15px;
+    padding: 20px;
     overflow-y: auto;
     border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
 }
+
+/* 메시지 박스 공통 스타일 */
 .user-message, .bot-message {
-    padding: 10px 15px; /* 여백을 줄입니다 (기존 10px 15px) */
+    padding: 8px 12px;
     border-radius: 18px;
     margin-bottom: 10px;
-    max-width: 80%;
-    line-height: 2;
-    font-size: 15px; /* 폰트 크기를 줄입니다 (기존 15px) */
+    max-width: 85%;
+    line-height: 1.5;
+    font-size: 14px;
 }
-}
-#chat-box .user-message {
-    background-color: #87CEEB; /* 하늘색으로 변경 */
+
+/* 사용자 메시지 (하늘색, 왼쪽 정렬) */
+.user-message {
+    background-color: #87CEEB;
     color: white;
-    align-self: flex-start; /* 왼쪽 정렬로 변경 */
-    margin-left: 0; /* 왼쪽 여백 제거 */
-    margin-right: auto; /* 오른쪽 여백 추가 */
+    align-self: flex-start;
+    margin-right: auto;
 }
+
+/* AI 답변 메시지 (회색, 오른쪽 정렬) */
 .bot-message {
     background-color: #e9e9eb;
     color: #333;
+    align-self: flex-end;
+    margin-left: auto;
 }
+
+/* 첫 번째 AI 시작 메시지만 왼쪽 정렬 및 폰트 크기 조절 */
+#chat-box .bot-message:first-child {
+    align-self: flex-start;
+    margin-left: 0;
+    margin-right: auto;
+    font-size: 14px;
+}
+
+/* 예시 질문 버튼 영역 */
+.example-questions {
+    padding: 5px 0; /* 위아래 여백만 살짝 줌 */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* 버튼 사이 간격 */
+    margin-bottom: 10px;
+}
+
+.example-btn {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: left;
+}
+
+.example-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* 메시지 입력창 */
 #user-input {
     display: flex;
     padding: 15px;
 }
+
 #message-input {
     flex-grow: 1;
     border: 1px solid #ccc;
@@ -54,6 +98,7 @@ body {
     padding: 10px 15px;
     font-size: 16px;
 }
+
 #send-button {
     margin-left: 10px;
     padding: 10px 20px;
@@ -65,61 +110,7 @@ body {
     font-size: 16px;
     font-weight: bold;
 }
+
 #send-button:hover {
     background-color: #0056b3;
-
 }
-
-.example-questions {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    font-size: 14px;
-}
-
-.example-questions p {
-    margin-top: 0;
-    margin-bottom: 8px;
-}
-
-.example-questions ul {
-    list-style-type: '👉 ';
-    padding-left: 20px;
-    margin-bottom: 0;
-}
-
-.example-questions li {
-    margin-bottom: 5px;
-}
-
-/* 이 부분의 코드를 찾아서 아래 내용으로 교체해 주세요 */
-.example-questions {
-    padding: 5px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.example-btn {
-    background-color: #f1f1f1;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    padding: 8px 12px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    text-align: left;
-}
-
-.example-btn:hover {
-    background-color: #e7e7e7;
-}
-
-
-
-
-
-
-
-
