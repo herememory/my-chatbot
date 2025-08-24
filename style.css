@@ -24,12 +24,12 @@ body {
     border-bottom: 1px solid #eee;
 }
 .user-message, .bot-message {
-    padding: 7px 11px; /* 여백을 줄입니다 (기존 10px 15px) */
+    padding: 10px 15px; /* 여백을 줄입니다 (기존 10px 15px) */
     border-radius: 18px;
     margin-bottom: 10px;
     max-width: 80%;
-    line-height: 1;
-    font-size: 13px; /* 폰트 크기를 줄입니다 (기존 15px) */
+    line-height: 10;
+    font-size: 15px; /* 폰트 크기를 줄입니다 (기존 15px) */
 }
 }
 .user-message {
@@ -115,6 +115,7 @@ body {
 .example-btn:hover {
     background-color: #e7e7e7;
 }
+
 
 
 
