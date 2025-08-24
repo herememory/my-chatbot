@@ -2,12 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageInput = document.getElementById('message-input');
     const sendButton = document.getElementById('send-button');
     const chatBox = document.getElementById('chat-box');
-    
-    // ✨ 예시 질문 버튼들에 대한 기능 추가 ✨
+
     const exampleButtons = document.querySelectorAll('.example-btn');
     exampleButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const question = button.textContent; // 버튼의 텍스트를 질문으로 사용
+            const question = button.textContent;
             messageInput.value = question;
             sendMessage();
         });
@@ -50,16 +49,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // ✨ 텍스트를 분석해서 링크를 걸어주는 최종 버전 함수 ✨
     function linkify(text) {
-        const citationRegex = /\(([^)]+?)\s*(https?:\/\/[^\s)]+)\)/g;
+        // '(관세법 시행규칙 제48조) https://...' 와 같은 패턴을 찾습니다.
+        const citationRegex = /\(([^)]+)\)\s*(https?:\/\/[^\s]+)/g;
+
+        // 찾은 패턴을 <a href="URL">법조항</a> 형태로 먼저 바꿉니다.
         let processedText = text.replace(citationRegex, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+        
+        // 그 다음에 줄바꿈 문자를 <br> 태그로 바꿉니다.
         return processedText.replace(/\n/g, '<br>');
     }
 
     function appendMessage(message, sender) {
         const messageWrapper = document.createElement('div');
         messageWrapper.className = sender === 'user' ? 'user-message' : 'bot-message';
+        
         messageWrapper.innerHTML = linkify(message);
+        
         chatBox.appendChild(messageWrapper);
         chatBox.scrollTop = chatBox.scrollHeight;
     }
