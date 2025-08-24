@@ -40,10 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ✨ 텍스트를 분석해서 링크를 걸어주는 최종 완성 버전 함수 ✨
+    // ✨ 텍스트를 분석해서 링크를 걸어주는 최종 버전 함수 ✨
     function linkify(text) {
-        // (관세법 제96조), 관세법 제96조 제2항, 등 다양한 형식을 모두 처리하는 정규식
-        const citationRegex = /((?:\(|\s)?(?:관세법|관세법 시행규칙|보세판매장 고시)\s*제\d+조(?:\s*제\d+항)?\)?(?:,)?)\s*(https?:\/\/[^\s]+)/g;
+        // '(관세법 제196조 https://...)' 와 같은 패턴을 찾습니다.
+        // 괄호 안의 법조항 텍스트와 바로 뒤따라오는 URL을 각각 그룹으로 잡습니다.
+        const citationRegex = /\(([^)]+?)\s*(https?:\/\/[^\s)]+)\)/g;
 
         // 찾은 패턴을 <a href="URL">법조항</a> 형태로 먼저 바꿉니다.
         let processedText = text.replace(citationRegex, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
