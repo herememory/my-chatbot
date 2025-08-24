@@ -23,7 +23,7 @@ const systemInstruction = `당신은 대한민국 관세법 분야의 최고 법
 app.post('/api/chat', async (req, res) => {
     try {
         const model = genAI.getGenerativeModel({
-            model: "gemini-1.5-pro-latest",
+            model: "gemini-2.5-flash-lite",
             systemInstruction: systemInstruction,
         });
         const chat = model.startChat();
@@ -40,4 +40,5 @@ app.post('/api/chat', async (req, res) => {
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`서버가 http://localhost:${PORT} 에서 실행 중입니다.`);
+
 });
