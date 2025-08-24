@@ -33,10 +33,11 @@ body {
 }
 }
 .user-message {
-    background-color: #007bff;
+    background-color: #87CEEB; /* 하늘색으로 변경 */
     color: white;
-    align-self: flex-end;
-    margin-left: auto;
+    align-self: flex-start; /* 왼쪽 정렬로 변경 */
+    margin-left: 0; /* 왼쪽 여백 제거 */
+    margin-right: auto; /* 오른쪽 여백 추가 */
 }
 .bot-message {
     background-color: #e9e9eb;
@@ -115,6 +116,7 @@ body {
 .example-btn:hover {
     background-color: #e7e7e7;
 }
+
 
 
 
