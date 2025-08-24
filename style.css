@@ -90,3 +90,26 @@ body {
 .example-questions li {
     margin-bottom: 5px;
 }
+
+.example-questions {
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.example-btn {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: left;
+}
+
+.example-btn:hover {
+    background-color: #e7e7e7;
+}
+
