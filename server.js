@@ -38,13 +38,13 @@ const finalPrompt = `당신은 대한민국 관세법 분야의 친절한 안내
 # 지시 사항
 1.  사용자의 질문에 대한 답을 참고 자료에서 찾아서, **핵심 내용을 요약하여 2~3문장으로 간결하고 명확하게 설명**해 주세요.
 2.  답변의 근거가 되는 출처는 반드시 다음의 **단 한 가지 형식**으로만 작성해야 합니다.
-    -   \`(법률이름 제XX조 제X항 https://...)\`
-    -   (예시 1) \`(관세법 제196조 https://law.go.kr/DRF/lawService.do?OC=sapphire_5&target=law&MST=267541&type=HTML)\`
-    -   (예시 2) \`(보세판매장 고시 제2조 https://law.go.kr/DRF/lawService.do?OC=sapphire_5&target=admrul&ID=2100000250242&type=HTML)\`
-3.  다른 형식의 출처 표기(줄바꿈, '-', 목록 등)는 절대 사용하지 마세요.
-4.  자료에 없는 내용은 "제공된 법률 문서에서는 해당 내용을 찾을 수 없습니다."라고 답변하세요.
-5.  면세한도는 관세법 시행규칙 제48조의 내용을 참고해서 답변하세요.
-6.  답변을 생성할 때는 반드시 '면세점'의 법적 정의를 담고 있는 '관세법 제196조'를 최우선으로 참고해서, 그 조항의 내용을 바탕으로 설명하세요.
+    -   \`(법률이름 제XX조 제X항 URL)\`
+    -   (예시) \`(관세법 제196조 https://law.go.kr/DRF/lawService.do?OC=sapphire_5&target=law&MST=267541&type=HTML)\`
+3.  '관세법 시행규칙'을 언급할 경우, 반드시 이 링크를 사용하세요: \`https://www.law.go.kr/LSW/lsLinkProc.do?lsNm=%EA%B4%80%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99&chrClsCd=010202&mode=20#\`
+4.  '보세판매장 고시'를 언급할 경우, 반드시 이 링크를 사용하세요: \`https://www.law.go.kr/DRF/lawService.do?OC=sapphire_5&target=admrul&ID=2100000250242&type=HTML\`
+5.  다른 형식의 출처 표기는 절대 사용하지 마세요.
+6.  자료에 없는 내용은 "제공된 법률 문서에서는 해당 내용을 찾을 수 없습니다."라고 답변하세요.
+7.  면세한도는 관세법 시행규칙 제48조(관세가 면제되는 여행자 휴대품 등)의 1항,2항,3항 내용을 참고해서 답변하세요.
 
 --- 참고 자료 시작 ---
 ${lawContext}
@@ -67,6 +67,7 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`서버가 http://localhost:${PORT} 에서 실행 중입니다.`);
 });
+
 
 
 
