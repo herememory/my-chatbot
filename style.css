@@ -40,7 +40,7 @@ body {
 
 /* 사용자 메시지 (하늘색, 왼쪽 정렬) */
 .user-message {
-    background-color: #87CEEB;
+    background-color: #007bff;
     color: white;
     align-self: flex-start;
     margin-right: auto;
@@ -114,3 +114,4 @@ body {
 #send-button:hover {
     background-color: #0056b3;
 }
+
