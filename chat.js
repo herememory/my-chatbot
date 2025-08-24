@@ -40,10 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // ✨ 텍스트 안의 URL을 찾아 링크 태그로 바꿔주는 기능 추가 ✨
+    function linkify(text) {
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+        return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    }
+
     function appendMessage(message, sender) {
         const messageWrapper = document.createElement('div');
         messageWrapper.className = sender === 'user' ? 'user-message' : 'bot-message';
-        messageWrapper.textContent = message;
+        
+        // ✨ .textContent 대신 .innerHTML 을 사용하고 linkify 함수를 적용 ✨
+        messageWrapper.innerHTML = linkify(message);
+        
         chatBox.appendChild(messageWrapper);
         chatBox.scrollTop = chatBox.scrollHeight;
     }
