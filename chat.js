@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ✨ 텍스트를 분석해서 링크를 걸어주는 최종 완성 버전 함수 ✨
     function linkify(text) {
-        // 따옴표, 괄호 등 다양한 기호에 대응하는 최종 정규식
-        const citationRegex = /((?:\(|`|'|‘)?(?:관세법|관세법 시행규칙|보세판매장 고시)\s*제\d+조(?:\s*제\d+항)?(?:\)|'|’|`)?,?)\s*(https?:\/\/[^\s`'’)]+)/g;
+        // '제48조의3' 처럼 조항 뒤에 숫자가 붙는 경우까지 처리하는 최종 정규식
+        const citationRegex = /((?:\()?(?:관세법|관세법 시행규칙|보세판매장 고시)\s*제\d+조(?:의\d+)?(?:\s*제\d+항)?(?:\))?)\s*(https?:\/\/[^\s]+)/g;
 
         // 찾은 패턴을 <a href="URL">법조항</a> 형태로 먼저 바꿉니다.
         let processedText = text.replace(citationRegex, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
