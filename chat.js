@@ -40,17 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ✨ 텍스트 안의 URL을 찾아 링크 태그로 바꿔주는 기능 추가 ✨
+    // ✨ 텍스트 안의 URL을 더 똑똑하게 찾아 링크 태그로 바꿔주는 기능 ✨
     function linkify(text) {
-        const urlRegex = /(https?:\/\/[^\s]+)/g;
-        return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+        // 괄호, 대괄호, 공백 등을 제외하고 순수한 URL만 찾아내는 정규식
+        const urlRegex = /(https?:\/\/[^\s<>()\[\]]+)/g;
+        
+        // 텍스트 속 괄호나 대괄호를 제거한 뒤 링크를 생성합니다.
+        const cleanedText = text.replace(/[\[\]()]/g, '');
+        
+        return cleanedText.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
     }
 
     function appendMessage(message, sender) {
         const messageWrapper = document.createElement('div');
         messageWrapper.className = sender === 'user' ? 'user-message' : 'bot-message';
         
-        // ✨ .textContent 대신 .innerHTML 을 사용하고 linkify 함수를 적용 ✨
+        // .innerHTML 을 사용하고 개선된 linkify 함수를 적용
         messageWrapper.innerHTML = linkify(message);
         
         chatBox.appendChild(messageWrapper);
