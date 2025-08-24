@@ -28,8 +28,8 @@ body {
     border-radius: 18px;
     margin-bottom: 10px;
     max-width: 80%;
-    line-height: 1.5;
-    font-size: 12px; /* 폰트 크기를 줄입니다 (기존 15px) */
+    line-height: 1;
+    font-size: 13px; /* 폰트 크기를 줄입니다 (기존 15px) */
 }
 }
 .user-message {
@@ -114,6 +114,7 @@ body {
 .example-btn:hover {
     background-color: #f0f0f0;
 }
+
 
 
 
