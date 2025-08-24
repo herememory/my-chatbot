@@ -19,7 +19,7 @@ body {
 }
 #chat-box {
     flex-grow: 1;
-    padding: 20px;
+    padding: 15px;
     overflow-y: auto;
     border-bottom: 1px solid #eee;
 }
@@ -29,6 +29,8 @@ body {
     margin-bottom: 10px;
     max-width: 80%;
     line-height: 1.5;
+    font-size: 15px; /* 폰트 크기 조절 */
+}
 }
 .user-message {
     background-color: #007bff;
@@ -94,12 +96,13 @@ body {
 .example-questions {
     padding: 5px 15px;
     display: flex;
-    flex-wrap: wrap; /* 버튼이 많아지면 다음 줄로 넘어가게 함 */
-    gap: 8px; /* 버튼 사이의 간격 */
+    flex-wrap: wrap;
+    gap: 8px;
+    background-color: transparent; /* 배경색 완전히 제거 */
 }
 
 .example-btn {
-    background-color: transparent; /* 배경색 없음 */
+    background-color: transparent;
     border: 1px solid #ddd;
     border-radius: 15px;
     padding: 8px 12px;
@@ -109,7 +112,7 @@ body {
 }
 
 .example-btn:hover {
-    background-color: #f0f0f0; /* 마우스를 올렸을 때만 살짝 색 변경 */
+    background-color: #f0f0f0;
 }
 
 
