@@ -32,7 +32,7 @@ body {
     font-size: 15px; /* 폰트 크기를 줄입니다 (기존 15px) */
 }
 }
-.user-message {
+#chat-box .user-message {
     background-color: #87CEEB; /* 하늘색으로 변경 */
     color: white;
     align-self: flex-start; /* 왼쪽 정렬로 변경 */
@@ -115,6 +115,7 @@ body {
 .example-btn:hover {
     background-color: #e7e7e7;
 }
+
 
 
 
