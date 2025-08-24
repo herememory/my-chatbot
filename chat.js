@@ -43,19 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // ✨ 텍스트를 분석해서 링크를 걸어주는 최종 버전 함수 ✨
     function linkify(text) {
         // '(관세법 시행규칙 제48조) https://...' 와 같은 패턴을 찾습니다.
-        // 괄호 안의 법조항 텍스트와 바로 뒤따라오는 URL을 각각 그룹으로 잡습니다.
         const citationRegex = /\(([^)]+)\)\s*(https?:\/\/[^\s]+)/g;
 
-        // 찾은 패턴을 <a href="URL">법조항</a> 형태로 바꿉니다.
-        return text.replace(citationRegex, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+        // 찾은 패턴을 <a href="URL">법조항</a> 형태로 먼저 바꿉니다.
+        let processedText = text.replace(citationRegex, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+        
+        // 그 다음에 줄바꿈 문자를 <br> 태그로 바꿉니다.
+        return processedText.replace(/\n/g, '<br>');
     }
 
     function appendMessage(message, sender) {
         const messageWrapper = document.createElement('div');
         messageWrapper.className = sender === 'user' ? 'user-message' : 'bot-message';
         
-        // .innerHTML 을 사용하고 linkify 함수를 적용 (줄바꿈 지원)
-        messageWrapper.innerHTML = linkify(message.replace(/\n/g, '<br>'));
+        // 수정된 linkify 함수를 적용합니다.
+        messageWrapper.innerHTML = linkify(message);
         
         chatBox.appendChild(messageWrapper);
         chatBox.scrollTop = chatBox.scrollHeight;
