@@ -65,4 +65,28 @@ body {
 }
 #send-button:hover {
     background-color: #0056b3;
+
+}
+
+.example-questions {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.example-questions p {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.example-questions ul {
+    list-style-type: '👉 ';
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.example-questions li {
+    margin-bottom: 5px;
 }
