@@ -92,24 +92,24 @@ body {
 }
 
 .example-questions {
-    padding: 5px 20px;
+    padding: 5px 15px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap; /* 버튼이 많아지면 다음 줄로 넘어가게 함 */
+    gap: 8px; /* 버튼 사이의 간격 */
 }
 
 .example-btn {
-    background-color: #f1f1f1;
+    background-color: transparent; /* 배경색 없음 */
     border: 1px solid #ddd;
     border-radius: 15px;
     padding: 8px 12px;
-    margin-bottom: 8px;
     cursor: pointer;
     font-size: 14px;
     text-align: left;
 }
 
 .example-btn:hover {
-    background-color: #e7e7e7;
+    background-color: #f0f0f0; /* 마우스를 올렸을 때만 살짝 색 변경 */
 }
+
 
