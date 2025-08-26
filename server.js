@@ -28,7 +28,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 app.post('/api/chat', async (req, res) => {
     try {
         // ✨ 모델 이름을 요청하신 gemini-2.0-flash 로 변경했습니다.
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
         const userMessage = req.body.message;
 
         // AI에게 보낼 최종 질문 (역할 부여 + 교과서 내용 + 실제 질문)
@@ -69,6 +69,7 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`서버가 http://localhost:${PORT} 에서 실행 중입니다.`);
 });
+
 
 
 
